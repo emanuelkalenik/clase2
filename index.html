@@ -133,13 +133,15 @@
   <!-- HUD -->
   <div id="hud"><span>✦ Haz clic en las criaturas para despertar sus sonidos ✦</span></div>
 
+  <!-- Tone.js (UMD bundle - loaded before importmap for global access) -->
+  <script src="https://cdn.jsdelivr.net/npm/tone@14.8.49/build/Tone.min.js"></script>
+
   <!-- Import Map -->
   <script type="importmap">
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/",
-      "tone": "https://cdn.jsdelivr.net/npm/tone@14.8.49/+esm"
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
     }
   }
   </script>
@@ -151,7 +153,8 @@
     // ============================================================
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-    import * as Tone from 'tone';
+    // Tone.js loaded via script tag - available as global `window.Tone`
+    const Tone = window.Tone;
 
     // ============================================================
     // CONSTANTS
